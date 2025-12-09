@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja bem Vindo...entre</title>
+    <style>
+       body {
+    margin: 0;
+    padding: 0;
+    background-image: url('unnamed.jpg');
+    background-size: cover;       /* cobre a tela */
+    background-position: center;  /* centraliza */
+    background-repeat: no-repeat; /* não repete */
+    background-attachment: fixed; /* evita corte ao rolar */
+    width: 100vw;
+    height: 100vh;
+}
+
+
+/* --- BOTÃO ENTRAR COM IMAGEM ll.png --- */
+#botao-som {
+    width: 150px;         /* botão menor */
+    height: 50px;         /* altura menor */
+    background-image: url('ll.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: none;
+    cursor: pointer;
+
+    font-size: 18px;       /* menor para combinar */
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #000;
+
+    position: absolute;    /* permite posicionar */
+    top: 62%;              /* move para cima da caixa 'nekor' */
+    left: 74%;
+    transform: translateX(-50%); /* centraliza horizontalmente */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* --- ESCURECER TELA AO CLICAR --- */
+#fade-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+}
+
+#fade-overlay.active {
+    opacity: 1;         /* escuro TOTAL */
+    pointer-events: all;
+}
+
+ 
+    </style>
+</head>
+
+<body>
+
+    <div class="body">
+        <button id="botao-som" class="abrir">
+            Entrar
+        </button>
+    </div>
+
+
+    <audio id="som-entrar" src="porta-abrindo.mp3"></audio>
+
+    <div id="fade-overlay"></div>
+
+    <script>
+        const botao = document.getElementById("botao-som");
+const som = document.getElementById("som-entrar");
+const fade = document.getElementById("fade-overlay");
+
+botao.addEventListener("click", () => {
+
+    som.currentTime = 0;
+    som.play().then(() => {
+
+        // Escurece a tela
+        fade.classList.add("active");
+
+        // Só muda de página quando o som terminar
+        som.addEventListener("ended", () => {
+            window.location.href = "The Bunker Shop/Cadastro/login.html"; // coloque seu link
+        });
+
+    }).catch(err => {
+        console.log("Erro ao tocar som:", err);
+    });
+
+});
+    </script>
+</body>
+</html>

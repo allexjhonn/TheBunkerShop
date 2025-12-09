@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conta</title>
+    <style>
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    letter-spacing: 5px;
+    font-family: ZOMBYE;
+}
+
+@font-face {
+    font-family: 'ZOMBYE';
+    src: url(font/ZOMBYE.otf);
+ }
+
+main {
+    width: 70%;
+    height: 70%;
+    background: linear-gradient(180deg, #022710, #01751e);
+    border-radius: 10px;
+    box-shadow: 10px 10px 0px black, -10px -10px 0 rgba(4, 197, 62, 0.979);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 20px;
+    padding: 20px;
+}
+
+#header-main{
+    padding: 10px;
+    position: relative;
+    width: 97%;
+    height: 10%;
+    display: flex;
+    flex: row   ;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 5px 10px 0px black, -5px -10px 0px rgb(0, 71, 24);
+}
+
+#titulo {
+    font-size: 3rem;
+    color: white;
+    font-family: 'ZOMBYE';
+}
+
+#saudacao {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.user-header {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+#img-user {
+    height: 50px;
+}
+
+aside {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.linha {
+    width: 90%;
+    height: 100px;
+    color: white;
+    font-size: 1.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.linha input{
+    width: 200px;
+    height: 20px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    box-shadow: 3px 5px 0px black, -3px -5px 0px rgb(252, 252, 252);
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+}
+
+.linha input::placeholder{
+    color: rgba(255, 255, 255, 0.623);
+}
+
+button{
+    width: 100px;
+    height: 40px;
+    background-color: green;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+button:hover{
+    box-shadow: inset 0px 0px 0px black;
+}
+button:active{
+    box-shadow:  inset 0px 0px 5px black, 3px 3px 0px black;
+}
+    </style>
+
+</head>
+<body>
+    <main>
+        <header id="header-main">
+            <p id="titulo">Sua Conta</p>
+            <div class="user-header">
+                <img src="Imagens/zombiiii.png" alt="" id="img-user">
+                <p id="saudacao">...</p>
+            </div>
+        </header>
+
+        <aside>
+            <div class="linha">
+                <label>Nome:</label>
+                <label id="caixa-nome"></label>
+                <input type="text" id="alterar-nome" placeholder="Digite o novo nome">
+                <button id="confirm" onclick="alterar()">Salvar</button>
+
+            </div>
+            <div class="linha">
+                <label>Senha:</label>
+                <label id="caixa-senha">************</label>
+            </div>
+            <button><a href="../index e etc/paginicial.html">Voltar</a></button>
+        </aside>
+    </main>
+
+<script>
+
+    let nome = localStorage.getItem("nomeUsuario");
+
+    if (nome) {
+        document.getElementById("saudacao").innerText = `Olá, ${nome}! Bem-vindo!`;
+        document.getElementById("caixa-nome").innerText = nome;
+
+    } else {
+        document.getElementById("saudacao").innerText = "Olá, visitante sem nome 👀";
+    }
+
+    function alterar() {
+        let inputAlterar = document.getElementById("alterar-nome")
+        nome = inputAlterar.value;
+
+        document.getElementById("saudacao").innerText = `Olá, ${nome}! Bem-vindo!`;
+        document.getElementById("caixa-nome").innerText = nome;
+    }
+    
+</script>
+</body>
+</html>

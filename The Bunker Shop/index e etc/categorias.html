@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Categorias - The Bunkers Shopp</title>
+   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="background:#1a1f1a url('pixelated-bunker-bg.png') center/cover no-repeat; image-rendering:pixelated;">
+
+<header style="width:100%; background:#0d0d0d; border-bottom:6px solid #000; padding:16px; display:flex; justify-content:space-between; align-items:center;">
+  <div style="font-size:18px; color:#ffb3b3;">The bunkers Shopp</div>
+  <nav style="display:flex; gap:20px; font-size:10px;">
+    <a href="paginicial.html" style="color:#d6d6d6; text-decoration:none;">Home</a>
+    <a href="categorias.html" style="color:#d6d6d6; text-decoration:none;">Categorias</a>
+    <a href="../Cadastro/conta.html" style="color:#d6d6d6; text-decoration:none;">Conta</a>
+    <a href="#" style="color:#d6d6d6; text-decoration:none;">Ajuda</a>
+    <a href="banco.html" style="color:#ffd479; text-decoration:none;">Moedas</a>
+  </nav>
+</header>
+
+<div class="app" style="grid-template-columns: 1fr;">
+  
+  <main class="shop" style="height:auto;">
+    <h2 style="font-size:14px; margin-bottom:20px; color:#ffd479;">Categorias de Itens</h2>
+
+    <div id="categoryContainer" style="display:flex; flex-direction:column; gap:40px;"></div>
+
+  </main>
+
+</div>
+
+<script>
+const products = [
+  { id: 'bat01', name: 'Bastão de Baseball', price: 40, desc: 'Arma leve e resistente.', img: 'imagens/bastão.png', category: 'Armas' },
+  { id: 'lan01', name: 'Lanterna', price: 25, desc: 'Ilumina áreas escuras.', img: 'imagens/agoravai 3.png', category: 'Ferramentas' },
+  { id: 'ban01', name: 'Bandagem', price: 15, desc: 'Cura ferimentos leves.', img: 'imagens/bandagem.png', category: 'Saúde' },
+  { id: 'can01', name: 'Cantil', price: 20, desc: 'Armazena água potável.', img: 'imagens/garrafa.png', category: 'Sobrevivência' },
+  { id: 'ped01', name: 'Pederneira', price: 30, desc: 'Acenda fogueiras facilmente.', img: 'imagens/pederneira.png', category: 'Ferramentas' },
+  { id: 'moch01', name: 'Mochila', price: 60, desc: 'Aumenta espaço de inventário.', img: 'imagens/mochila.png', category: 'Equipamentos' },
+  { id: 'caniv01', name: 'Canivete', price: 35, desc: 'Ferramenta versátil.', img: 'imagens/canivete.png', category: 'Armas' },
+  { id: 'suco01', name: 'Arma (Mp4)', price: 10, desc: 'Use para se defender', img: 'imagens/mp4 Submachine.png', category: 'Armas' },
+  { id: 'sopa01', name: 'Sopa de Tomate', price: 18, desc: 'Recupera HP moderado.', img: 'imagens/imagem tomate.png', category: 'Comida' },
+  { id: 'bin01', name: 'Binóculos', price: 50, desc: 'Permite observar longe.', img: 'imagens/binoculos.png', category: 'Ferramentas' },
+  { id: 'past01', name: "Pastilhas Purificadoras d'Água", price: 22, desc: 'Purifica água contaminada.', img: 'imagens/psta.png', category: 'Saúde' },
+  { id: 'rad01', name: 'Rádio', price: 45, desc: 'Comunicação à distância.', img: 'imagens/agoravai 1.png', category: 'Equipamentos' },
+  { id: 'pil01', name: 'Pilhas', price: 12, desc: 'Energia para dispositivos.', img: 'imagens/pilhas.png', category: 'Ferramentas' },
+  { id: 'mach01', name: 'Machado', price: 70, desc: 'Arma poderosa corpo a corpo.', img: 'imagens/agoravai 2.png', category: 'Armas' },
+  { id: 'ammo01', name: 'Munição (várias)', price: 55, desc: 'Essencial para armas de fogo.', img: 'imagens/bala da ak47 e da mp4 Submachine.png', category: 'Armas' }
+];
+
+function renderCategories() {
+  const container = document.getElementById("categoryContainer");
+  if (!container) return;
+
+  // Agrupar itens por categoria
+  const groups = {};
+  for (const p of products) {
+    if (!groups[p.category]) groups[p.category] = [];
+    groups[p.category].push(p);
+  }
+
+  container.innerHTML = '';
+
+  for (const category in groups) {
+    const box = document.createElement("div");
+
+    box.innerHTML = `
+      <h3 style="font-size:14px; margin-bottom:10px; color:#ffb3b3;">${category}</h3>
+      <div class="products"></div>
+    `;
+
+    const list = box.querySelector(".products");
+
+    groups[category].forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img class="pixel-img" src="${item.img}" alt="${item.name}">
+        <div class="meta">
+          <div style="font-size:11px">${item.name}</div>
+          <div style="font-size:9px; color:#cfcfcf">${item.desc}</div>
+          <div class="price">${item.price} sucata</div>
+          <div style="margin-top:8px">
+            <button class="btn" data-id="${item.id}">Comprar</button>
+          </div>
+        </div>
+      `;
+
+      list.appendChild(card);
+    });
+
+    container.appendChild(box);
+  }
+}
+  renderCategories(); 
+
+</script>
+</body>
+</html>

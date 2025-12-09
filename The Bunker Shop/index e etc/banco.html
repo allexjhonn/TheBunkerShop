@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Comprar Moedas - The Bunkers Shopp</title>
+   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="background:#1a1f1a url('pixelated-bunker-bg.png') center/cover no-repeat; image-rendering:pixelated;">
+
+<header style="width:100%; background:#0d0d0d; border-bottom:6px solid #000; padding:16px; display:flex; justify-content:space-between; align-items:center;">
+  <div style="font-size:18px; color:#ffb3b3;">The bunkers Shopp</div>
+  <nav style="display:flex; gap:20px; font-size:10px;">
+    <a href="paginicial.html" style="color:#d6d6d6; text-decoration:none;">Home</a>
+    <a href="categorias.html" style="color:#d6d6d6; text-decoration:none;">Categorias</a>
+    <a href="banco.html" style="color:#ffd479; text-decoration:none;">Moedas</a>
+    <a href="../Cadastro/conta.html" style="color:#d6d6d6; text-decoration:none;">Conta</a>
+    <a href="#" style="color:#d6d6d6; text-decoration:none;">Ajuda</a>
+  </nav>
+</header>
+
+<div class="app" style="grid-template-columns: 1fr;">
+  
+  <main class="shop" style="height:auto;">
+    
+    <h2 style="font-size:14px; margin-bottom:20px; color:#ffd479; text-align:center;">
+      💰 Loja de Moedas Premium
+    </h2>
+
+    <h1 style="font-size:10px; text-align:center; color:#d6d6d6; margin-bottom:25px;">
+      Adquira moedas usando dinheiro real para acelerar seu progresso no bunker!
+    <h1>
+
+    <div id="coinStore" class="products"></div>
+
+  </main>
+
+</div>
+
+<script>
+const coinPacks = [
+  { id: "p100", coins: 100, price: 4.99, img: "moeda feita.png" },
+  { id: "p500", coins: 500, price: 19.99, img: "moeda feita.png" },
+  { id: "p1200", coins: 1200, price: 39.99, img: "moeda feita.png" },
+  { id: "p3000", coins: 3000, price: 89.99, img: "moeda feita.png" },
+  { id: "p5000", coins: 5000, price: 129.99, img: "moeda feita.png" },
+  { id: "p10000", coins: 10000, price: 199.99, img: "moeda feita.png" }
+];
+
+
+function renderCoinShop() {
+  const container = document.getElementById("coinStore");
+  container.innerHTML = "";
+
+  coinPacks.forEach(pack => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img class="pixel-img" src="${pack.img}" alt="${pack.coins} moedas">
+      <div class="meta">
+        <div style="font-size:12px; color:#ffd479">${pack.coins} Moedas</div>
+        <div style="font-size:10px;">R$ ${pack.price.toFixed(2)}</div>
+        
+        <div style="margin-top:8px">
+          <button class="btn" onclick="buyPack('${pack.id}')">Comprar</button>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+function buyPack(id) {
+  const p = coinPacks.find(x => x.id === id);
+
+  alert(
+    `Pacote selecionado:\n` +
+    `${p.coins} moedas\n` +
+    `Preço: R$ ${p.price.toFixed(2)}\n\n` +
+    `⚠ Sistema de pagamento real ainda não conectado.\n` +
+    `Aqui entra PIX / cartão / PayPal.`
+  );
+}
+
+renderCoinShop();
+</script>
+
+</body>
+</html>

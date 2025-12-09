@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Avaliação</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        background-image: linear-gradient(180deg, #022710, #01751e); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: "Press Start 2P", cursive; 
+        color: white;
+        text-align: center;
+    }
+
+    .container {
+        background: rgba(0,0,0,0.25);
+        padding: 40px;
+        border-radius: 15px;
+        max-width: 500px;
+    }
+
+    button {
+        padding: 12px 25px;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        font-family: "Press Start 2P", cursive;
+    }
+
+    .sim {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .nao {
+        background-color: #B22222;
+        color: white;
+        position: relative;
+    }
+
+    
+    .stars {
+        margin-top: 20px;
+        display: none;
+        font-size: 35px;
+    }
+
+    .star {
+        cursor: pointer;
+        color: #ffffff80; 
+        transition: transform 0.2s, color 0.2s;
+    }
+
+    .star:hover {
+        transform: scale(1.25);
+    }
+
+    #zumbizin {
+        position: absolute;
+        top: 180px;
+        left: 200px;
+        width: 150px;
+        animation: bounce 3s infinite ease-out;
+    }
+
+    @keyframes bounce {
+        0%{transform: translateY(0px);}
+        50%{transform: translateY(30px);}
+        100%{transform: translateY(0px);}
+    }
+</style>
+</head>
+<body>
+<img id="zumbizin" src="aaaaaaa.png" alt="">
+<div class="container">
+    <h1>Gostou do nosso site?</h1>
+
+    <button class="sim" id="simBtn">Sim</button>
+    <button class="nao" id="naoBtn">Não</button>
+
+    <!-- Estrelas inicialmente ocultas -->
+    <div class="stars" id="stars">
+        <span class="star" data-value="1">⭐</span>
+        <span class="star" data-value="2">⭐</span>
+        <span class="star" data-value="3">⭐</span>
+        <span class="star" data-value="4">⭐</span>
+        <span class="star" data-value="5">⭐</span>
+    </div>
+</div>
+
+<script>
+    const naoBtn = document.getElementById("naoBtn");
+    const simBtn = document.getElementById("simBtn");
+    const starsDiv = document.getElementById("stars");
+    const stars = document.querySelectorAll(".star");
+    let rating = 0;
+
+    
+    naoBtn.addEventListener("mouseover", () => {
+        const x = Math.random() * (window.innerWidth - 150);
+        const y = Math.random() * (window.innerHeight - 150);
+
+        naoBtn.style.position = "absolute";
+        naoBtn.style.left = x + "px";
+        naoBtn.style.top = y + "px";
+    });
+
+   
+    simBtn.addEventListener("click", () => {
+        starsDiv.style.display = "block";
+    });
+
+    
+    function updateStars(value) {
+        stars.forEach(star => {
+            star.style.color = star.getAttribute("data-value") <= value ? "yellow" : "#ffffff80";
+        });
+    }
+
+   
+    stars.forEach(star => {
+        
+        
+        star.addEventListener("mouseover", () => {
+            updateStars(star.getAttribute("data-value"));
+        });
+
+       
+        star.addEventListener("mouseleave", () => {
+            updateStars(rating);
+        });
+
+        
+        star.addEventListener("click", () => {
+            rating = star.getAttribute("data-value");
+            updateStars(rating);
+            alert(`Obrigado! Você avaliou com ${rating} estrela(s) ⭐`);
+        });
+    });
+</script>
+
+</body>
+</html>

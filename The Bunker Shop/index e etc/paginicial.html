@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The bunkers Shopp</title>
+      
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background:#1a1f1a url('pixelated-bunker-bg.png') center/cover no-repeat; image-rendering:pixelated;">
+  <header style="width:100%; background:#0d0d0d; border-bottom:6px solid #000; padding:16px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 6px 0 #000;">
+    <div style="font-size:18px; color:#ffb3b3;">The bunkers Shopp</div>
+    <nav style="display:flex; gap:20px; font-size:10px;">
+      <a href="#" style="color:#d6d6d6; text-decoration:none;">Home</a>
+      <a href="../index e etc/categorias.html" style="color:#d6d6d6; text-decoration:none;">Categorias</a>
+      <a href="../Cadastro/login.html" style="color:#d6d6d6; text-decoration:none;">Conta</a>
+      <a href="../ajuda/ajuda.html" style="color:#d6d6d6; text-decoration:none;">Ajuda</a>
+      <a href="../banco/banco.html" style="color:#ffd479; text-decoration:none;">Moedas</a>
+    </nav>
+  </header>
+  <section id="bf-banner" 
+  style="
+    width:100%;
+    padding:20px 0;
+    background-image: url(fundo.png);
+    image-rendering:pixelated;
+    border-bottom:6px solid #000;
+    display:flex;
+    justify-content:center;
+  ">
+
+    <div style="background:#1a1a1a; border:6px solid #000; padding:20px 30px; border-radius:12px; box-shadow:0 8px 0 #000; text-align:center;">
+      <div style="font-size:20px; color:#ffd479; margin-bottom:6px;">BLACK FRIDAY</div>
+      <div style="font-size:12px; color:#ffffff;">Ofertas Apocalípticas!</div>
+    </div>
+  </section>
+  <div class="app">
+    <main class="shop" id="shop">
+      <div class="title-row">
+        <div>
+          <div class="game-title">The bunkers Shopp</div>
+          <div class="subtitle"></div>
+        </div>
+        <div style="flex:1"></div>
+        <div style="font-size:10px; text-align:right">Jogador: <strong id="playerName">Sobrevivente</strong><br/>Nível: <span id="playerLevel">5</span></div>
+      </div>
+
+      <div class="products" id="products"></div>
+
+      <div class="status-bar">
+        <div class="stat">Moeda: <span id="gold">150</span> Dk</div>
+        <div class="stat">Vida: <span id="hp">78</span>/100</div>
+        <div class="stat">Reputação: <span id="rep">+2</span></div>
+      </div>
+
+      <div class="pixel-effect">☣</div>
+    </main>
+
+    <aside class="sidebar">
+      <h3>Carrinho</h3>
+      <div class="cart-list" id="cartList">(vazio)</div>
+      <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center; gap:8px;">
+        <div style="font-size:12px">Total: <strong id="total">0</strong> Dk</div>
+        <button class="btn" id="checkoutBtn">Finalizar</button>
+      </div>
+
+      <div style="margin-top:18px; font-size:10px; color:#cfcfcf;">Dicas: Itens raros aparecem esporadicamente. Combine armas e armaduras para enfrentar hordas.</div>
+    </aside>
+
+    <div class="modal" id="modal">
+      <div class="back" id="modalBack"></div>
+      <div class="box" id="modalBox">
+        <div id="modalContent" style="font-size:12px"></div>
+        <div style="margin-top:12px; text-align:right"><button class="btn" id="modalClose"><a href="creditos.html">Finalizar</a></button></div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

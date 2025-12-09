@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: none;  
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.fundo {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.fundo img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    position: relative;
+    width: 30%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 25px;
+    box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    gap: 40px;
+}
+
+input {
+    width: 50%;
+    height: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: inset 5px 5px 5px rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 10px;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: inset -3px -3px 3px  rgba(255, 255, 255, 0.2);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.521);
+}
+
+a {
+    font-size: small;
+    text-decoration: none;
+    color: white;
+}
+
+strong {
+    color: orange;
+    text-decoration: underline;
+}
+
+#botao-login {
+    width: 30%;
+    padding: 7px;
+    border: none;
+    border-radius: 20px;
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    box-shadow:  -3px -3px 0px rgb(1, 170, 119), 3px 3px 0px rgb(0, 56, 9);
+}
+
+#botao-login:active {
+     box-shadow:  -3px -3px 0px rgb(0, 56, 9), 3px 3px 0px rgb(1, 170, 119), inset 3px 3px 5px rgba(0, 0, 0, 0.719)
+}

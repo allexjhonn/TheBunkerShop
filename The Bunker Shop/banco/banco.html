@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>banco</title>
+
+<style>
+
+    body {
+        margin: 0;
+        background: url("banquinho.png") center/cover no-repeat fixed;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
+
+   
+    #fade {
+        position: fixed;
+        inset: 0;
+        background: black;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.8s ease;
+    }
+
+    
+    .screen-button {
+        position: absolute;
+      
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -45%);
+        
+        width: 230px;  
+        height: 170px;  
+
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+
+<button class="screen-button" onclick="abrirPagina()"></button>
+
+
+<div id="fade"></div>
+
+<script>
+    function abrirPagina() {
+        const fade = document.getElementById("fade");
+        fade.style.opacity = "1";      
+
+        setTimeout(() => {
+            window.location.href = "../index e etc/banco.html"; // coloque o nome da página desejada
+        }, 900);
+    }
+</script>
+
+</body>
+</html>

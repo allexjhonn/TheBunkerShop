@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créditos</title>
+
+    <style>
+        #bgvideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: black;
+            z-index: -1;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        #start {
+            position: absolute;
+            font-size: 30px;
+            padding: 20px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        #botao-container {
+            display: none;
+            z-index: 10;
+        }
+        
+        button {
+            width: 200px;
+            height: 40px;
+            background-color: yellow;
+            color: black;
+            cursor: pointer;
+            border: none;
+            font-size: 18px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 0px rgba(255, 251, 0, 0.705), -5px -5px 0px black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- overlay para liberar som -->
+    <div id="start">CLIQUE PARA COMEÇAR</div>
+
+    <video id="bgvideo">
+        <source src="WhatsApp Video 2025-12-04 at 12.32.36.mp4" type="video/mp4">
+    </video>
+
+    <div id="botao-container">
+        <a href="../avaliação/avaliação.html">
+            <button><strong>AVALIAR</strong></button>
+        </a>
+    </div>
+
+    <script>
+        const start = document.getElementById("start");
+        const video = document.getElementById("bgvideo");
+        const botao = document.getElementById("botao-container");
+
+        start.addEventListener("click", () => {
+            start.style.display = "none";
+            video.play(); // agora pode tocar som
+        });
+
+        video.addEventListener("ended", () => {
+            botao.style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
